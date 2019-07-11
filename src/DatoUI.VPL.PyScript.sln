@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.271
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DatoUI.VPL.PyScript", "DatoUI.VPL.PyScript\DatoUI.VPL.PyScript.csproj", "{C4EB5F1F-2D50-4B70-A358-31A1D2F34769}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DatoUI.VPL.PyScript.Demo", "DatoUI.VPL.PyScript.Demo\DatoUI.VPL.PyScript.Demo.csproj", "{941E023C-7164-4EF7-B2E8-6A1EF6E8DA99}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{C4EB5F1F-2D50-4B70-A358-31A1D2F34769}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C4EB5F1F-2D50-4B70-A358-31A1D2F34769}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C4EB5F1F-2D50-4B70-A358-31A1D2F34769}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C4EB5F1F-2D50-4B70-A358-31A1D2F34769}.Release|Any CPU.Build.0 = Release|Any CPU
+		{941E023C-7164-4EF7-B2E8-6A1EF6E8DA99}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{941E023C-7164-4EF7-B2E8-6A1EF6E8DA99}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{941E023C-7164-4EF7-B2E8-6A1EF6E8DA99}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{941E023C-7164-4EF7-B2E8-6A1EF6E8DA99}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {FE3318FD-EDB4-407F-90AD-55968A1AC54B}
+	EndGlobalSection
+EndGlobal
