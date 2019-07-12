@@ -3,10 +3,95 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:avalonEdit="http://icsharpcode.net/sharpdevelop/avalonedit"
              xmlns:local="clr-namespace:DatoUI.VPL.PyScript.Controls"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
-    <Grid>
-            
+    <Grid x:Name="DockPanel">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <StackPanel Grid.Row="0" Orientation="Horizontal">
+            <ToolBar  BorderThickness="1" BorderBrush="Black" Loaded="FrameworkElement_OnLoaded" IsEnabled="{Binding ElementName=cbIsLocked,Path=IsChecked}">
+                <ToolBar.Resources>
+                    <Style TargetType="{x:Type Image}">
+                        <Style.Triggers>
+                            <DataTrigger
+                            Binding="{Binding IsEnabled, RelativeSource={RelativeSource AncestorLevel=1, AncestorType={x:Type ButtonBase}}}"
+                            Value="False">
+                                <Setter Property="Opacity" Value="0.30" />
+                            </DataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </ToolBar.Resources>
+                <Button Click="OpenFileClick" ToolTip="打开脚本">
+                    <Image Source="/DatoUI.VPL.PyScript;component/Images/Open.png" Height="16" />
+                </Button>
+                <Button Click="SaveFileClick" ToolTip="保存脚本">
+                    <Image Source="/DatoUI.VPL.PyScript;component/Images/Save.png" Height="16" />
+                </Button>
+                <Separator />
+                <Button Command="Cut" ToolTip="剪切">
+                    <Image Source="/DatoUI.VPL.PyScript;component/Images/Cut.png" Height="16" />
+                </Button>
+                <Button Command="Copy" ToolTip="复制">
+                    <Image Source="/DatoUI.VPL.PyScript;component/Images/Copy.png" Height="16" />
+                </Button>
+                <Button Command="Paste" ToolTip="粘贴">
+                    <Image Source="/DatoUI.VPL.PyScript;component/Images/Paste.png" Height="16" />
+                </Button>
+                <Button Command="Delete" ToolTip="删除">
+                    <Image Source="/DatoUI.VPL.PyScript;component/Images/Delete.png" Height="16" />
+                </Button>
+                <Separator />
+                <Button Command="Undo" ToolTip="撤销">
+                    <Image Source="/DatoUI.VPL.PyScript;component/Images/Undo.png" Height="16" />
+                </Button>
+                <Button Command="Redo" ToolTip="重做">
+                    <Image Source="/DatoUI.VPL.PyScript;component/Images/Redo.png" Height="16" />
+                </Button>
+                <Separator />
+                <CheckBox IsChecked="{Binding WordWrap, ElementName=TextEditor}" ToolTip="自动换行">
+                    <Image Source="/DatoUI.VPL.PyScript;component/Images/WordWrap.png" Height="16" />
+                </CheckBox>
+                <CheckBox IsChecked="{Binding ShowLineNumbers, ElementName=TextEditor}" ToolTip="显示行号">
+                    <TextBlock Width="16" TextAlignment="Center">
+                    <Run Text="#" />
+                    </TextBlock>
+                </CheckBox>
+                <CheckBox IsChecked="{Binding Options.ShowEndOfLine, ElementName=TextEditor}" ToolTip="显示结束符">
+                    <TextBlock Width="16" TextAlignment="Center">
+                    <Run Text="¶" />
+                    </TextBlock>
+                </CheckBox>
+
+                <Separator />
+                <Button x:Name="CompileButton" Click="CompileButton_OnClick" ToolTip="调试运行">
+                    <Image Source="/DatoUI.VPL.PyScript;component/Images/Play.png" Height="16" />
+                </Button>
+            </ToolBar>
+            <CheckBox Content="解锁调试" ToolTip="选中进行编辑调试代码" Name="cbIsLocked" Checked="CbIsLocked_Checked" IsThreeState="False" IsChecked="True" FontWeight="Bold" Foreground="Red" VerticalAlignment="Center" VerticalContentAlignment="Center" Margin="20,0,0,0"/>
+        </StackPanel>
+        <Grid Grid.Row="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*" />
+                <RowDefinition Height="auto" />
+            </Grid.RowDefinitions>
+
+            <avalonEdit:TextEditor Grid.Row="0" BorderBrush="#1E1E1E" BorderThickness="1"
+                IsEnabled="{Binding ElementName=cbIsLocked,Path=IsChecked}"
+                ShowLineNumbers="True"
+                x:Name="TextEditor"
+                FontFamily="Consolas"
+                FontSize="10pt"
+                SyntaxHighlighting="Python" Text="" Margin="3,0,1,0"/>
+            <TextBox Grid.Row="1" Background="LightPink" Foreground="Gray" FontWeight="Bold"
+                     MinHeight="100" MaxHeight="150" MaxWidth="450"  Margin="3,2,1,0" Name="tbError"  Visibility="Collapsed"
+                     VerticalScrollBarVisibility="Visible"
+                     HorizontalScrollBarVisibility="Visible"
+                       Text="" />
+        </Grid>
     </Grid>
 </UserControl>
